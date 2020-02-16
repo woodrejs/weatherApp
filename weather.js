@@ -198,7 +198,7 @@ window.onload=function()
 /// TODAY FORECAST
     function getTodayForecast(cityName)
     {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=8d04b2f8b25f0fa25cce7eb5e3c377e4`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=8d04b2f8b25f0fa25cce7eb5e3c377e4`)
         .then((resp) => resp.json())
         .then((resp) => {
             
@@ -216,7 +216,7 @@ window.onload=function()
 /// 4 DAYS FORECAST
     function getFutureForecast(cityName)
     {
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=6e52176aeb950e806a1b0e159ffad374`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=6e52176aeb950e806a1b0e159ffad374`)
         .then(resp=>resp.json())
         .then((resp)=>{
             
