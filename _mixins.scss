@@ -1,0 +1,27 @@
+@mixin flex($direction,$justify,$align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin gridRow($start,$end)
+{
+    grid-row-start: $start;
+    grid-row-end: $end;
+}
+@mixin gridCol($start,$end)
+{
+    grid-column-start: $start;
+    grid-column-end: $end;
+}
+@keyframes growUp
+{
+    from
+    {
+        transform: scale(1);
+    }
+    to
+    {
+        transform: scale(1.05);
+    }
+}

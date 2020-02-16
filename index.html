@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="weather.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+    
+    <div id="appContainer">
+        <div id="logo">
+            <div>
+                <span>Weather</span>
+                <span>App</span>
+            </div>
+        </div>
+        <div id="mainForecastContainer"></div>
+        <div id="searchContainer">
+            <button id="search">szukaj</button>
+            <input id="searchZone" type="text">
+        </div>
+        <div id="forecastsSlider">
+            <button id="left" class="sliderArrows">
+                <div class="triangle-left triangle"></div>
+            </button>
+            <div id="slider">
+                <div id="futureForecastsContainer"></div>
+            </div>
+            <button id="right" class="sliderArrows">
+                <div class="triangle-right triangle"></div>
+            </button>
+        </div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+</html>
