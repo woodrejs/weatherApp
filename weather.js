@@ -230,10 +230,10 @@ window.onload=function()
     }
 ///SLIDER MOVE
     let counter = 0;
-    let moveSlider = function()
+    const moveSlider = function()
     {
-        const singleSildeWidth = futureForecastsContainer.firstChild.offsetWidth;
-        const singleSlideMargin =  parseFloat(window.getComputedStyle(futureForecastsContainer.firstChild).marginRight);
+        let singleSildeWidth = futureForecastsContainer.firstChild.offsetWidth;
+        let singleSlideMargin =  parseFloat(window.getComputedStyle(futureForecastsContainer.firstChild).marginRight);
 
         if(this.id == 'right' && counter == 37)
             counter = 37;

@@ -191,12 +191,12 @@ body
 {
     display: flex;
     margin-bottom: 0.1rem;
-    height: 8rem;
+    height: 33%;
     margin: 0.1rem;
 
     button
     {
-        width: 1rem;
+        width: 4%;
         background-color: $fourth;
         border-radius: 0.3rem;
         border: none;
@@ -210,7 +210,7 @@ body
             border-style: solid;
         }
     }
-    & :nth-child(1)
+    & >:nth-child(1)
     {
         margin-right: 0.1rem;
         .triangle-left
@@ -219,7 +219,7 @@ body
             border-color: transparent $first transparent transparent;
         }
     }
-    & :nth-child(3)
+    & >:nth-child(3)
     {
         margin-left: 0.1rem;
         .triangle-right 
@@ -232,7 +232,7 @@ body
 #slider
 {
     overflow-x: hidden;
-    max-width: 43.8rem;
+    max-width: 92%;
     border-radius: 0.3rem;
 }
 #futureForecastsContainer
@@ -378,10 +378,6 @@ body
             width: 5vw;
         }
     }
-    #slider
-    {
-        max-width: 100%;
-    }
     #futureForecastsContainer
     {
         width: 1800vw;
@@ -487,10 +483,6 @@ body
     #forecastsSlider
     {
         height: 50%;
-    }
-    #slider
-    {
-        max-width: 100%;
     }
     #futureForecastsContainer
     {
