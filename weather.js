@@ -10,21 +10,10 @@ window.onload=function()
     const slider = document.querySelector('#slider');
     const futureForecasts = [];
     const date = getDate();
-    const moveLeft = ()=>{
-        leftArrow.removeEventListener('click',moveLeft);
-        moveSlider(futureForecastsContainer,-1);
-        futureForecastsContainer.addEventListener('transitionend',()=>leftArrow.addEventListener('click',moveLeft));
-    };
-    const moveRight = ()=>{
-        rightArrow.removeEventListener('click',moveRight);
-        moveSlider(futureForecastsContainer,1);
-        futureForecastsContainer.addEventListener('transitionend',()=>rightArrow.addEventListener('click',moveRight));
-    };
+    
     const searchCity = ()=>search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts);
     let cityName = getCityName();
 ///LISTENERS
-    rightArrow.addEventListener('click',moveRight);
-    leftArrow.addEventListener('click',moveLeft);
     searchButton.addEventListener('click',searchCity);
     searchZone.addEventListener('keyup',(e)=>e.keyCode === 13 ? search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts): false);
 ////ERROR MESSAGE
@@ -109,23 +98,6 @@ window.onload=function()
                 img.setAttribute('src','icons/mist.png');
               break;
           }
-    }
-//MOVE SLIDER
-    function moveSlider(obj,direction)
-    {
-        const slideWidth = parseInt(window.getComputedStyle(obj.childNodes[0]).width);
-        const slideMargin = parseInt(window.getComputedStyle(obj.childNodes[0]).marginRight)*2.2;
-        const slideTotalWidth = (slideWidth + slideMargin);
-        const sliderTranslateX = getTranslateX(obj);
-        
-        console.log(Math.abs(sliderTranslateX));
-
-        if(Math.abs(sliderTranslateX) < 1 && direction == -1)
-            return;
-        else if(Math.abs(sliderTranslateX) > slideTotalWidth*36 && direction == 1)
-            return;
-        else
-            obj.style.transform = `translateX(${sliderTranslateX - slideTotalWidth*direction}px)`;
     }
 ///FORECAST
     function Forecast(temp,feelLike,weather,pressure,wind,date,name=null,obj)
@@ -256,5 +228,26 @@ window.onload=function()
             .catch(err=>console.log(err));
         })
     }
+///SLIDER MOVE
+    let counter = 0;
+    let moveSlider = function()
+    {
+        const singleSildeWidth = futureForecastsContainer.firstChild.offsetWidth;
+        const singleSlideMargin =  parseFloat(window.getComputedStyle(futureForecastsContainer.firstChild).marginRight);
+
+        if(this.id == 'right' && counter == 37)
+            counter = 37;
+        else if(this.id == 'left' && counter == 0)
+            counter = 0;
+        else if(this.id == 'right')
+            counter++;
+        else
+            counter--;
+        
+        futureForecastsContainer.style.transform = `translateX(-${(singleSildeWidth + singleSlideMargin) * counter}px)`;
+    }
+
+    rightArrow.addEventListener('click',moveSlider);
+    leftArrow.addEventListener('click',moveSlider);
 }
 
