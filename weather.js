@@ -225,7 +225,7 @@ window.onload=function()
                 getTodayForecast(cityName);
                 getFutureForecast(cityName);
             })
-            .catch(err=>console.log(err));
+            .catch(()=>cityName = 'Warszawa');
         })
     }
 ///SLIDER MOVE
