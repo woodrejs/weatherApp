@@ -208,6 +208,7 @@ window.onload=function()
                 forecast.create();
             }
         })
+        .then(()=>resizer())
         .catch(err=>console.log(err));
     } 
 ///GEOLOKALIZATION
@@ -230,10 +231,12 @@ window.onload=function()
     }
 ///SLIDER MOVE
     let counter = 0;
+    const htmlObj = document.querySelector('html');
     const moveSlider = function()
     {
+        let margin = parseFloat(window.getComputedStyle(htmlObj).fontSize)*0.1;
         let singleSildeWidth = futureForecastsContainer.firstChild.offsetWidth;
-        let singleSlideMargin =  parseFloat(window.getComputedStyle(futureForecastsContainer.firstChild).marginRight);
+        
 
         if(this.id == 'right' && counter == 37)
             counter = 37;
@@ -244,10 +247,17 @@ window.onload=function()
         else
             counter--;
         
-        futureForecastsContainer.style.transform = `translateX(-${(singleSildeWidth + singleSlideMargin) * counter}px)`;
+        futureForecastsContainer.style.transform = `translateX(-${(singleSildeWidth + margin) * counter}px)`;
     }
-
     rightArrow.addEventListener('click',moveSlider);
     leftArrow.addEventListener('click',moveSlider);
+///RESIZE
+    const resizer = function()
+    { 
+        let slideInRow = window.innerWidth > 600 ? 3 : 2;
+        let sliderWidth = slider.offsetWidth;
+        futureForecastsContainer.style.width = `${sliderWidth*(40/slideInRow)}px`;
+    }
+    window.addEventListener('resize',resizer);
 }
 

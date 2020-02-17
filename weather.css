@@ -367,15 +367,18 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 588rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 100%;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 #futureForecastsContainer > div {
-  width: 14.6rem;
-  margin-right: 0.1rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 0.05rem;
   background-color: rgba(38, 29, 38, 0.8);
   border-radius: 0.3rem;
   display: -ms-grid;

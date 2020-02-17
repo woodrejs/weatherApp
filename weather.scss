@@ -238,14 +238,14 @@ body
 #futureForecastsContainer
 {
     display: flex;
-    width: 588rem;
+    justify-content: space-around;
     height: 100%;
     transition: 0.3s;
 
     & >div
     {
-        width: 14.6rem;
-        margin-right: 0.1rem;
+        flex: 1;
+        margin: 0 0.05rem;
         background-color: $fourth;
         border-radius: 0.3rem;
 
