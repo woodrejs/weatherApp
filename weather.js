@@ -1,6 +1,5 @@
 window.onload=function()
 {
-///VARIABLES
     const futureForecastsContainer = document.querySelector('#futureForecastsContainer');
     const mainForecastContainer = document.querySelector('#mainForecastContainer');
     const leftArrow = document.querySelector('#left');
@@ -10,45 +9,34 @@ window.onload=function()
     const slider = document.querySelector('#slider');
     const futureForecasts = [];
     const date = getDate();
-    
-    const searchCity = ()=>search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts);
-    
-///LISTENERS
-    searchButton.addEventListener('click',searchCity);
-    searchZone.addEventListener('keyup',(e)=>e.keyCode === 13 ? search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts): false);
+
 ////ERROR MESSAGE
-    function showError(obj1,obj2)
+    const showError = ()=>
     {
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('error');
         errorMessage.innerHTML = 'Wprowadziłeś niepoprawną nazwę miasta. Spróbuj ponownie.'
-        obj1.appendChild(errorMessage);
-        //REMOVE OPACITY TO SLIDER WHEN ERROR MESSAGE
-        obj2.style.backgroundColor = 'rgba(38, 29, 38, 0.8)';
+        mainForecastContainer.appendChild(errorMessage);
+        slider.style.backgroundColor = 'rgba(38, 29, 38, 0.8)';
     }
 ///SEARCH
     let cityName;
-    function search(input,obj1,obj2,array)
+    const search = ()=>
     {
-        cityName = input.value;
-        clear(obj1,obj2,array);
+        cityName = searchZone.value;
+        slider.style.backgroundColor = 'rgba(38, 29, 38, 0)';
+        clearApp();
         getTodayForecast(cityName);
         getFutureForecast(cityName);
-        //ADD OPACITY TO SLIDER WHEN ERROR MESSAGE
-        slider.style.backgroundColor = 'rgba(38, 29, 38, 0)';
     }
+    searchButton.addEventListener('click',search);
+    searchZone.addEventListener('keyup',(e)=>e.keyCode === 13 ? search(): false);
 ///CLEAR APP
-    function clear(obj1,obj2,array)
+    const clearApp = ()=>
     {
-        obj1.innerHTML = '';
-        obj2.innerHTML = '';
-        array.length = 0;
-    }
-///GET TRANSLATEX
-    function getTranslateX(myElement) {
-        let style = window.getComputedStyle(myElement);
-        let matrix = new WebKitCSSMatrix(style.webkitTransform);
-        return matrix.m41;
+        futureForecastsContainer.innerHTML = '';
+        mainForecastContainer.innerHTML = '';
+        futureForecasts.length = 0;
     }
 ///DATE
     function getDate()
@@ -69,8 +57,6 @@ window.onload=function()
                 img.setAttribute('src','icons/few_clouds.png');
               break;
             case 'scattered clouds':
-                img.setAttribute('src','icons/scattered_clouds.png');
-              break;
             case 'overcast clouds':
                 img.setAttribute('src','icons/scattered_clouds.png');
               break;
@@ -78,8 +64,6 @@ window.onload=function()
                 img.setAttribute('src','icons/broken_clouds.png');
               break;
             case 'shower rain':
-                img.setAttribute('src','icons/shower_rain.png');
-              break;
             case 'light rain':
                 img.setAttribute('src','icons/shower_rain.png');
               break;
@@ -90,8 +74,6 @@ window.onload=function()
                 img.setAttribute('src','icons/thunderstorm.png');
               break;
             case 'snow':
-                img.setAttribute('src','icons/snow.png');
-              break;
             case 'light snow':
                 img.setAttribute('src','icons/snow.png');
               break;
@@ -184,7 +166,8 @@ window.onload=function()
                 getFutureForecast(cityName);
             })
             .catch(err=>console.log(err));
-        },()=>{
+
+        },(err)=>{
             getTodayForecast('Warszawa');
             getFutureForecast('Warszawa');
         });
@@ -206,7 +189,7 @@ window.onload=function()
           
           mainForecast.create();
         })
-        .catch(err=>showError(mainForecastContainer,slider));
+        .catch(()=>showError());
     }
 /// 4 DAYS FORECAST
     function getFutureForecast(cityName)
@@ -264,4 +247,3 @@ window.onload=function()
     }
     window.addEventListener('resize',resizer);
 }
-
