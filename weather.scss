@@ -5,7 +5,10 @@ $first:#594F59;
 $secound: rgba(166, 149, 99, 0.9);
 $third: #261525;
 $fourth:  rgba(38, 29, 38, 0.8);
-
+*
+{
+    border: 1px solid green;
+}
 body
 {
     padding: 0;
@@ -157,18 +160,24 @@ body
     @include flex(row,center,center);
     button
     {
+        
+        height: 1.2rem;
+        width: 10%;
         background-color: $first;
         border: none;
-        height: 1.2rem;
+        border-radius: 0.3rem;
         margin: 0rem 0.1rem;
         font-size: 0.55rem;
         font-weight: bold;
         text-transform: uppercase;
         color: $third;
-        width: 10%;
         cursor: pointer;
-        border-radius: 0.3rem;
         transition: 0.2s background-color;
+        @include flex(row,center,center);
+        span
+        {
+            height: 0.55rem;
+        }
         &:hover
         {
             background-color: $secound;
@@ -367,7 +376,14 @@ body
         button
         {
             font-size: 0.4rem;
-            line-height: 0.4rem;
+            span
+            {
+                height: 0.4rem;
+            }
+        }
+        input
+        {
+
         }
     }
     #forecastsSlider
