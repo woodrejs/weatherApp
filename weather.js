@@ -12,7 +12,7 @@ window.onload=function()
     const date = getDate();
     
     const searchCity = ()=>search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts);
-    let cityName = getCityName();
+    
 ///LISTENERS
     searchButton.addEventListener('click',searchCity);
     searchZone.addEventListener('keyup',(e)=>e.keyCode === 13 ? search(searchZone,futureForecastsContainer,mainForecastContainer,futureForecasts): false);
@@ -27,6 +27,7 @@ window.onload=function()
         obj2.style.backgroundColor = 'rgba(38, 29, 38, 0.8)';
     }
 ///SEARCH
+    let cityName;
     function search(input,obj1,obj2,array)
     {
         cityName = input.value;
@@ -179,14 +180,16 @@ window.onload=function()
                     return cityName;
             })
             .then(cityName=>{
-                console.log(cityName)
-                cityName == undefined ? cityName = 'Warszawa' : false;
                 getTodayForecast(cityName);
                 getFutureForecast(cityName);
             })
             .catch(err=>console.log(err));
-        })
+        },()=>{
+            getTodayForecast('Warszawa');
+            getFutureForecast('Warszawa');
+        });
     }
+    getCityName();
 /// TODAY FORECAST
     function getTodayForecast(cityName)
     {
