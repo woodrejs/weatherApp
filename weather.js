@@ -167,6 +167,26 @@ window.onload=function()
             this.mainContainer.appendChild(this.hourSpan);
         }
     }
+///GEOLOKALIZATION
+    function getCityName()
+    {
+        navigator.geolocation.getCurrentPosition((pos)=>{
+
+            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.coords.latitude},${pos.coords.longitude}&key=AIzaSyB9YJgnJbfaapYiytWhZRB7vLOWv8J8B9E`)
+            .then(resp=>resp.json())
+            .then(resp=>{
+                    const cityName =  resp.plus_code.compound_code.split(' ')[1].slice(0,-1);
+                    return cityName;
+            })
+            .then(cityName=>{
+                console.log(cityName)
+                cityName == undefined ? cityName = 'Warszawa' : false;
+                getTodayForecast(cityName);
+                getFutureForecast(cityName);
+            })
+            .catch(err=>console.log(err));
+        })
+    }
 /// TODAY FORECAST
     function getTodayForecast(cityName)
     {
@@ -202,7 +222,6 @@ window.onload=function()
             }
         })
         .then(()=>{
-    
             for(let forecast of futureForecasts)
             {
                 forecast.create();
@@ -211,30 +230,11 @@ window.onload=function()
         .then(()=>resizer())
         .catch(err=>console.log(err));
     } 
-///GEOLOKALIZATION
-    function getCityName()
-    {
-        navigator.geolocation.getCurrentPosition((pos)=>{
-
-            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.coords.latitude},${pos.coords.longitude}&key=AIzaSyB9YJgnJbfaapYiytWhZRB7vLOWv8J8B9E`)
-            .then(resp=>resp.json())
-            .then(resp=>{
-                 const cityName =  resp.plus_code.compound_code.split(' ')[1].slice(0,-1);
-                 return cityName;
-            })
-            .then(cityName=>{
-                getTodayForecast(cityName);
-                getFutureForecast(cityName);
-            })
-            .catch(()=>cityName = 'Warszawa');
-        })
-    }
 ///SLIDER MOVE
     let counter = 0;
     const htmlObj = document.querySelector('html');
     const moveSlider = function()
     {
-        //  && window.innerHeight < 400
         let slideInRow = window.innerWidth < 600 && window.innerHeight > 320 ? 2 : 3;
         let singleSildeWidth = slider.offsetWidth/slideInRow;
 

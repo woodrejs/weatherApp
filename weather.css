@@ -271,6 +271,7 @@ body {
 }
 
 #searchContainer button {
+  outline: none;
   height: 1.2rem;
   width: 10%;
   background-color: #594F59;
@@ -347,6 +348,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  outline: none;
 }
 
 #forecastsSlider button div {

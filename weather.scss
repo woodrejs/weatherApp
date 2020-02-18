@@ -173,7 +173,7 @@ body
     @include flex(row,center,center);
     button
     {
-        
+        outline: none;
         height: 1.2rem;
         width: 10%;
         background-color: $first;
@@ -224,6 +224,7 @@ body
         border: none;
         @include flex(column,center,center);
         cursor: pointer;
+        outline: none;
         div
         {
             display: inline-block;
