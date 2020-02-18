@@ -234,7 +234,8 @@ window.onload=function()
     const htmlObj = document.querySelector('html');
     const moveSlider = function()
     {
-        let slideInRow = window.innerWidth > 600 ? 3 : 2;
+        //  && window.innerHeight < 400
+        let slideInRow = window.innerWidth < 600 && window.innerHeight > 320 ? 2 : 3;
         let singleSildeWidth = slider.offsetWidth/slideInRow;
 
         if(this.id == 'right' && counter == 37)
@@ -252,7 +253,7 @@ window.onload=function()
 ///RESIZE
     const resizer = function()
     { 
-        let slideInRow = window.innerWidth > 600 ? 3 : 2;
+        let slideInRow = window.innerWidth < 600 && window.innerHeight > 320 ? 2: 3;
         let sliderWidth = slider.offsetWidth;
         futureForecastsContainer.style.width = `${sliderWidth*(40/slideInRow)}px`;
 

@@ -20,10 +20,6 @@
   }
 }
 
-* {
-  border: 1px solid green;
-}
-
 body {
   padding: 0;
   margin: 0;
@@ -404,21 +400,21 @@ body {
   border-radius: 0.3rem;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 2fr 3fr 1fr;
-      grid-template-columns: 1fr 2fr 3fr 1fr;
+  -ms-grid-columns: 1fr 3fr 3fr 1fr;
+      grid-template-columns: 1fr 3fr 3fr 1fr;
   -ms-grid-rows: (1fr)[5];
       grid-template-rows: repeat(5, 1fr);
-  -webkit-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 1.3rem;
+          column-gap: 1.3rem;
 }
 
 #futureForecastsContainer > div :nth-child(1) {
   -ms-grid-column: 3;
-      grid-column-start: 3;
-  grid-column-end: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
   -ms-grid-row: 2;
-      grid-row-start: 2;
-  grid-row-end: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
   color: #594F59;
   font-size: 0.6rem;
   text-align: left;
@@ -429,47 +425,50 @@ body {
 
 #futureForecastsContainer > div :nth-child(2) {
   -ms-grid-column: 2;
-      grid-column-start: 2;
-  grid-column-end: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
   -ms-grid-row: 2;
-      grid-row-start: 2;
-  grid-row-end: 5;
-  height: 2.5rem;
+  -ms-grid-row-span: 3;
+  grid-row: 2 / 5;
+  height: 3rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-animation: growUp 2s infinite alternate;
           animation: growUp 2s infinite alternate;
 }
 
 #futureForecastsContainer > div :nth-child(3) {
   -ms-grid-column: 3;
-      grid-column-start: 3;
-  grid-column-end: 4;
-  -ms-grid-row: 4;
-      grid-row-start: 4;
-  grid-row-end: 5;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
   color: #594F59;
   font-size: 0.9rem;
-  text-align: left;
-  -ms-flex-item-align: start;
-      -ms-grid-row-align: start;
-      align-self: start;
-}
-
-#futureForecastsContainer > div :nth-child(4) {
-  -ms-grid-column: 3;
-      grid-column-start: 3;
-  grid-column-end: 4;
-  -ms-grid-row: 3;
-      grid-row-start: 3;
-  grid-row-end: 4;
-  color: #594F59;
-  font-size: 0.6rem;
   text-align: left;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+#futureForecastsContainer > div :nth-child(4) {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4 / 5;
+  color: #594F59;
+  font-size: 0.6rem;
+  text-align: left;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
 }
 
 .error {
@@ -566,10 +565,10 @@ body {
     height: 10%;
   }
   #searchContainer button {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
   }
   #searchContainer button span {
-    height: 0.4rem;
+    height: 0.5rem;
   }
   #forecastsSlider {
     height: 40%;
@@ -577,66 +576,58 @@ body {
   #forecastsSlider button {
     width: 5vw;
   }
-  #futureForecastsContainer {
-    width: 1800vw;
-  }
   #futureForecastsContainer > div {
-    width: 45vw;
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-    -ms-grid-rows: (1fr)[4];
-        grid-template-rows: repeat(4, 1fr);
-    row-gap: 0;
-  }
-  #futureForecastsContainer > div span {
-    text-align: center !important;
+    -ms-grid-rows: 1fr 1fr 2fr 2fr 1fr;
+        grid-template-rows: 1fr 1fr 2fr 2fr 1fr;
   }
   #futureForecastsContainer > div :nth-child(1) {
-    -ms-grid-column: 2;
-        grid-column-start: 2;
-    grid-column-end: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / 5;
     -ms-grid-row: 1;
-        grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 0.8rem;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    -ms-grid-row-span: 1;
+    grid-row: 1 / 2;
+    font-size: 0.7rem;
+    text-align: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
   #futureForecastsContainer > div :nth-child(2) {
-    -ms-grid-column: 2;
-        grid-column-start: 2;
-    grid-column-end: 3;
-    -ms-grid-row: 2;
-        grid-row-start: 2;
-    grid-row-end: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / 5;
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3 / 4;
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
   #futureForecastsContainer > div :nth-child(3) {
-    -ms-grid-column: 2;
-        grid-column-start: 2;
-    grid-column-end: 3;
-    -ms-grid-row: 3;
-        grid-row-start: 3;
-    grid-row-end: 4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / 5;
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4 / 5;
     font-size: 1.2rem;
-    -ms-flex-item-align: end;
-        -ms-grid-row-align: end;
-        align-self: end;
+    text-align: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
   #futureForecastsContainer > div :nth-child(4) {
-    -ms-grid-column: 2;
-        grid-column-start: 2;
-    grid-column-end: 3;
-    -ms-grid-row: 4;
-        grid-row-start: 4;
-    grid-row-end: 5;
-    font-size: 0.8rem;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / 5;
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    grid-row: 5 / 6;
+    font-size: 0.7rem;
+    text-align: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
 }
 
@@ -717,11 +708,9 @@ body {
   #forecastsSlider {
     height: 50%;
   }
-  #futureForecastsContainer {
-    width: 2000vw;
-  }
   #futureForecastsContainer > div {
-    width: 50vw;
+    -webkit-column-gap: 0.7rem;
+            column-gap: 0.7rem;
   }
 }
 /*# sourceMappingURL=weather.css.map */
