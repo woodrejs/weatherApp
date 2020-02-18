@@ -234,9 +234,8 @@ window.onload=function()
     const htmlObj = document.querySelector('html');
     const moveSlider = function()
     {
-        let margin = parseFloat(window.getComputedStyle(htmlObj).fontSize)*0.1;
-        let singleSildeWidth = futureForecastsContainer.firstChild.offsetWidth;
-        
+        let slideInRow = window.innerWidth > 600 ? 3 : 2;
+        let singleSildeWidth = slider.offsetWidth/slideInRow;
 
         if(this.id == 'right' && counter == 37)
             counter = 37;
@@ -246,8 +245,7 @@ window.onload=function()
             counter++;
         else
             counter--;
-        
-        futureForecastsContainer.style.transform = `translateX(-${(singleSildeWidth + margin) * counter}px)`;
+        futureForecastsContainer.style.transform = `translateX(-${singleSildeWidth * counter}px)`;
     }
     rightArrow.addEventListener('click',moveSlider);
     leftArrow.addEventListener('click',moveSlider);
@@ -257,6 +255,8 @@ window.onload=function()
         let slideInRow = window.innerWidth > 600 ? 3 : 2;
         let sliderWidth = slider.offsetWidth;
         futureForecastsContainer.style.width = `${sliderWidth*(40/slideInRow)}px`;
+
+        futureForecastsContainer.style.transform = `translateX(-${sliderWidth/slideInRow * counter}px)`;
     }
     window.addEventListener('resize',resizer);
 }
