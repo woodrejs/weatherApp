@@ -45,6 +45,12 @@ body {
           align-items: center;
 }
 
+* {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 #appContainer {
   height: 30rem;
   width: 46rem;
