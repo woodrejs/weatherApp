@@ -19,7 +19,7 @@
           <span>App</span>
         </div>
       </div>
-      <div id="mainForecastContainer"></div>
+      <div id="FCSTctr"></div>
       <div id="searchContainer">
         <button id="search"><span>szukaj</span></button>
         <input id="searchZone" type="text" />
@@ -28,13 +28,36 @@
         <button id="left" class="sliderArrows">
           <div class="triangle-left triangle"></div>
         </button>
-        <div id="slider">
-          <div id="futureForecastsContainer"></div>
+        <div id="SLDR">
+          <div id="FCSThmbctr"></div>
         </div>
         <button id="right" class="sliderArrows">
           <div class="triangle-right triangle"></div>
         </button>
       </div>
     </div>
+    <template id="FCSTpl">
+      <div id='FCST'>
+        <img src="#" alt="forecast_icon" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </template>
+    <template id="FCSThmbTpl">
+      <div>
+        <span></span>
+        <img src="#" alt="forecast_icon" />
+        <span></span>
+        <span></span>
+      </div>
+    </template>
+    <template id="error">
+      <div>
+        <span>Wprowadziłeś niepoprawną nazwę miasta. Spróbuj ponownie.</span>
+    </template>
   </body>
 </html>
